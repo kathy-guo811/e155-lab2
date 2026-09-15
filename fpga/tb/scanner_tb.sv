@@ -12,8 +12,7 @@ module scanner_tb;
     logic enable;
     logic [3:0] row;
 
-    // Instantiate scanner with a very small counter
-    // so simulation runs quickly.
+    // instantiate scanner with a very small counter to speed up simulation
     scanner #(
         .width(2),
         .max_count(3)

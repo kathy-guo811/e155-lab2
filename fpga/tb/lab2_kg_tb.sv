@@ -14,7 +14,7 @@ module lab2_kg_tb;
     logic [6:0] segment;
     logic [1:0] anode;
     logic [3:0] led;
-
+    
     lab2_kg #() dut (
         .sl(sl),
         .sr(sr),
