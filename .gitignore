@@ -1,0 +1,17 @@
+impl*/
+*.dir/
+.build_status
+.run_manager.ini
+.recovery
+.spread_sheet.ini
+.spreadsheet_view.ini
+*.log
+*.html
+*.xml
+*.pfl
+*.ccl
+*.srp
+*.dmp
+._Real_._Math_.vhd
+impl_1/
+seven_segment_display_sim/vsim.wlf
