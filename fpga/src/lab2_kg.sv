@@ -40,7 +40,7 @@ module lab2_kg(
 		.seg (segment)
 	);
 
-	/ Scanner passthrough to LEDs
+	// Scanner passthrough to LEDs
     assign led = scan;
 
 	// scanner

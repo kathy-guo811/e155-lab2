@@ -34,8 +34,10 @@ module scanner #(
 			else begin
 				count <= count + 1;
             end
+        end
 		else begin
 			count <= count;
+        end
 	end
 
 endmodule
