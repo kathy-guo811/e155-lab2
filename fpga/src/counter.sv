@@ -29,7 +29,8 @@ module counter #(
 			else begin
 				count <= count + 1;
 			end
-		else
+		end
+		else begin
 			count <= count;
 		end
 	end
