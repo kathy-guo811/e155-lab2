@@ -27,12 +27,14 @@ module scanner #(
                 if (row == 4'b0001) begin
                     row <= 4'b1000;
                 end
-                else
+                else begin
                     row <= row >> 1;
                 end
-			else
+            end
+			else begin
 				count <= count + 1;
-		else
+            end
+		else begin
 			count <= count;
 	end
 
