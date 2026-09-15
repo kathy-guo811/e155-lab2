@@ -17,16 +17,19 @@ module scanner #(
 	logic [width:0] count;
 
 	always_ff @(posedge clk) begin
-		if (reset == 0)
+		if (reset == 0) begin
 			count <= 0;
             row <= 4'b1000;
-		else if (enable)
-			if (count == max_count)
+        end
+		else if (enable) begin
+			if (count == max_count) begin
 				count <= 0;
-                if (row == 4'b0001)
+                if (row == 4'b0001) begin
                     row <= 4'b1000;
+                end
                 else
                     row <= row >> 1;
+                end
 			else
 				count <= count + 1;
 		else
