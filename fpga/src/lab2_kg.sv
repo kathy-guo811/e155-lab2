@@ -32,7 +32,7 @@ module lab2_kg(
 	);
 
 	// Select which 4-bit value is sent to the decoder
-    assign display_value = digit_select ? sl : sr;
+    assign display_value = digit_select ? sr : sl;
 
 	// 7-segment LED output
 	seven_segment_display d(
