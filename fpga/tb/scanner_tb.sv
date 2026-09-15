@@ -52,7 +52,7 @@ module scanner_tb;
         #40;
 
         assert (row == 4'b0100)
-            $display("TRANSITION 1000 -> 0100 PASS")
+            $display("TRANSITION 1000 -> 0100 PASS");
         else
             $error("TRANSITION 1000 -> 0100 FAILED: row = %b", row);
 
@@ -60,7 +60,7 @@ module scanner_tb;
          #40;
 
         assert (row == 4'b0010)
-            $display("TRANSITION 0100 -> 0010 PASS")
+            $display("TRANSITION 0100 -> 0010 PASS");
         else
             $error("TRANSITION 0100 -> 0010 FAILED: row = %b", row);
 
@@ -68,7 +68,7 @@ module scanner_tb;
         #40;
 
         assert (row == 4'b0001)
-            $display("TRANSITION 0010 -> 0001 PASS")
+            $display("TRANSITION 0010 -> 0001 PASS");
         else
             $error("TRANSITION 0010 -> 0001 FAILED: row = %b", row);
 
@@ -76,7 +76,7 @@ module scanner_tb;
         #40;
 
         assert (row == 4'b1000)
-            $display("TRANSITION 0001 -> 1000 PASS")
+            $display("TRANSITION 0001 -> 1000 PASS");
         else
             $error("TRANSITION 0001 -> 1000 FAILED: row = %b", row);
 
