@@ -1,3 +1,8 @@
+// Kathy Guo
+// kaguo@g.hmc.edu
+// 9/14/2026
+// Testbench for scanner module
+
 `timescale 1ns/1ns
 
 module scanner_tb;

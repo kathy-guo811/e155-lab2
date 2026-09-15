@@ -1,3 +1,8 @@
+// Kathy Guo
+// kaguo@g.hmc.edu
+// 9/14/2026
+// Testbench for lab 2 top module
+
 `timescale 1ns/1ns
 
 module lab2_kg_tb;
