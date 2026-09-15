@@ -28,4 +28,5 @@ module seven_segment_display (
 		4'hF: seg = 7'b0001110;
 		default: seg = 7'b1111111; //set default output to all segments OFF
 	endcase
+	
 endmodule
