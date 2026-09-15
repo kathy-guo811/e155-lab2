@@ -34,7 +34,7 @@ module scanner_tb;
         #10;
 
         // test reset
-        if (row == 4'b1000)
+        assert (row == 4'b1000)
             $display("RESET PASSED");
         else
             $display("RESET FAILED: row = %b", row);
@@ -46,7 +46,7 @@ module scanner_tb;
         // first transition
         #40;
 
-        if (row == 4'b0100)
+        assert (row == 4'b0100)
             $display("TRANSITION 1000 -> 0100 PASS")
         else
             $error("TRANSITION 1000 -> 0100 FAILED: row = %b", row);
@@ -54,7 +54,7 @@ module scanner_tb;
         // second transition
          #40;
 
-        if (row == 4'b0010)
+        assert (row == 4'b0010)
             $display("TRANSITION 0100 -> 0010 PASS")
         else
             $error("TRANSITION 0100 -> 0010 FAILED: row = %b", row);
@@ -62,7 +62,7 @@ module scanner_tb;
         // third transition
         #40;
 
-        if (row == 4'b0001)
+        assert (row == 4'b0001)
             $display("TRANSITION 0010 -> 0001 PASS")
         else
             $error("TRANSITION 0010 -> 0001 FAILED: row = %b", row);
@@ -70,7 +70,7 @@ module scanner_tb;
         // fourth transition
         #40;
 
-        if (row == 4'b1000)
+        assert (row == 4'b1000)
             $display("TRANSITION 0001 -> 1000 PASS")
         else
             $error("TRANSITION 0001 -> 1000 FAILED: row = %b", row);
@@ -80,7 +80,7 @@ module scanner_tb;
 
         #80;
 
-        if (row == 4'b1000)
+        assert (row == 4'b1000)
             $display("ENABLE PASS");
         else
             $error("ENABLE FAILED: row changed while disabled");
