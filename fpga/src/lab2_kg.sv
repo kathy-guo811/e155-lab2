@@ -16,6 +16,8 @@ module lab2_kg(
 
 	logic int_osc;
 	logic digit_select;
+	logic [3:0] display_value;
+	logic [3:0] scan;
 	
 	// Internal high-speed oscillator
 	HSOSC #(.CLKHF_DIV(2'b01))
@@ -29,17 +31,26 @@ module lab2_kg(
 		.digit_select(digit_select)
 	);
 
+	// Select which 4-bit value is sent to the decoder
+    assign display_value = digit_select ? sl : sr;
+
 	// 7-segment LED output
 	seven_segment_display d(
-		.sw6 (s),
+		.sw6 (display_value),
 		.seg (segment)
 	);
 
+	/ Scanner passthrough to LEDs
+    assign led = scan;
+
 	// scanner
 	scanner s(
-		.sw6 (s),
-		.seg (segment)
-	);
+        .clk(int_osc),
+        .reset(rst),
+        .enable(1'b1),
+        .row(scan)
+    );
+
 
 	// time multiplexing
 	assign anode[0] = ~digit_select;
