@@ -13,7 +13,7 @@ module counter #(
 	output logic digit_select
 );
 
-	blinker #(.width(width), .max_count(max_count)) blink (
+	blinker #(.width(width), .max_count(max_count)) blink_c (
 		.clk(clk),
 		.reset(reset),
 		.enable(enable),
