@@ -8,10 +8,12 @@
 module lab2_kg(
 	input logic [3:0] sl,
     input logic [3:0] sr,
+	input logic [3:0] col,
 	input logic rst,
 	output logic [6:0] segment,
 	output logic [1:0] anode,
-	output logic [3:0] led
+	output logic [3:0] led,
+	output logic [3:0] row
 );
 
 	logic int_osc;
@@ -40,20 +42,20 @@ module lab2_kg(
 		.seg (segment)
 	);
 
-	// Scanner passthrough to LEDs
-    assign led = scan;
-
 	// scanner
 	scanner s(
         .clk(int_osc),
         .reset(rst),
         .enable(1'b1),
-        .row(scan)
+        .row(row)
     );
 
 
 	// time multiplexing
 	assign anode[0] = ~digit_select;
 	assign anode[1] = digit_select;
+	
+	// scanner output
+	assign led = ~col;
 
 endmodule
