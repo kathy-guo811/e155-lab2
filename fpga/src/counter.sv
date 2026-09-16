@@ -7,7 +7,7 @@
 
 module counter #(
 	parameter width = 23,
-	parameter max_count = 24'd250000)
+	parameter max_count = 24'd24000)
    (input logic clk,
 	input logic reset,
 	input logic enable,
@@ -27,7 +27,7 @@ module counter #(
                 digit_select <= ~digit_select;
 			end
 			else begin
-				count <= count + 1;
+				count <= count + 1'b1;
 			end
 		end
 		else begin
