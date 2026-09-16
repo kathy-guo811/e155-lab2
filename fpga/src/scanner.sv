@@ -13,7 +13,7 @@ module scanner #(
 	output logic [3:0] row
 );
 
-	logic led, led_prev;
+	logic led;
 
 	blinker #(.width(width), .max_count(max_count)) blink_s (
 		.clk(clk),
@@ -33,21 +33,5 @@ module scanner #(
 				row <= row >> 1'b1;
 		end
 	end
-
-	/*always_ff @(posedge clk) begin
-		if (reset == 0) begin
-			row <= 4'b1000;
-			led_prev <= 0;
-		end
-		else begin
-			led_prev <= led;
-			if (led != led_prev) begin        // edge detected
-				if (row == 4'b0001)
-					row <= 4'b1000;
-				else
-					row <= row >> 1'b1;
-			end
-		end
-	end*/
 
 endmodule
