@@ -10,7 +10,7 @@ module lab2_kg_tb;
 
     logic [3:0] sl;
     logic [3:0] sr;
-    logic rst;
+    logic rst, enable;
 
     logic [6:0] segment;
     logic [1:0] anode;

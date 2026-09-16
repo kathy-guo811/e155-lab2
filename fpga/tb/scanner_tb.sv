@@ -14,7 +14,7 @@ module scanner_tb;
 
     // instantiate scanner with a very small counter to speed up simulation
     scanner #(
-        .width(2),
+        .width(1),
         .max_count(3)
     ) dut (
         .clk(clk),

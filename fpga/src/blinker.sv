@@ -15,7 +15,7 @@ module blinker #(
 
 	logic [width:0] counter;
 
-	always_ff @(posedge clk) begin
+	always_ff @(posedge clk, negedge reset) begin
 		if (reset == 0)
 			counter <= 0;
 		else if (enable)
