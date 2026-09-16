@@ -1,7 +1,7 @@
 // Kathy Guo
 // kaguo@g.hmc.edu
 // 9/14/2026
-// Top level module for E155_lab1. 
+// Top level module for E155_lab2. 
 // Instantiates multiplexing counter module, scanning module and assign statements to implement multiplexing and scanning passthrough.
 
 

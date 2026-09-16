@@ -6,7 +6,7 @@
 
 module counter #(
 	parameter width = 23,
-	parameter max_count = 17'24000)
+	parameter max_count = 24'd24000)
    (input  logic clk,
 	input  logic reset,
 	input  logic enable,
