@@ -22,7 +22,7 @@ module blinker #(
 			if (counter == max_count)
 				counter <= 0;
 			else
-				counter <= counter + 1;
+				counter <= counter + 1'b1;
 		else
 			counter <= counter;
 	end

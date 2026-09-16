@@ -21,8 +21,20 @@ module scanner #(
 		.enable(enable),
 		.led(led)
 	);
+	
+	always_ff @(posedge led,negedge reset) begin
+		if (reset == 0) begin
+			row <= 4'b1000;
+		end
+		else begin
+			if (row == 4'b0001)
+				row <= 4'b1000;
+			else
+				row <= row >> 1'b1;
+		end
+	end
 
-	always_ff @(posedge clk) begin
+	/*always_ff @(posedge clk) begin
 		if (reset == 0) begin
 			row <= 4'b1000;
 			led_prev <= 0;
@@ -36,6 +48,6 @@ module scanner #(
 					row <= row >> 1'b1;
 			end
 		end
-	end
+	end*/
 
 endmodule
