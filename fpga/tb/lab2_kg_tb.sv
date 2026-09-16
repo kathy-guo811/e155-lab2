@@ -14,7 +14,7 @@ module lab2_kg_tb;
     logic [6:0] segment;
     logic [1:0] anode;
     logic [3:0] led;
-    
+     
     lab2_kg #() dut (
         .sl(sl),
         .sr(sr),
@@ -35,6 +35,14 @@ module lab2_kg_tb;
             $display("TOP RESET PASS");
         else
             $error("TOP RESET FAILED: led = %b", led);
+        
+        // test Enable
+        enable = 1
+        #20
+        assert (led == 4'b0100)
+            $display("TOP ENABLE PASS");
+        else
+            $error("TOP ENABLE FAILED: led = %b", led);
 
         // release reset
         rst = 1;
