@@ -28,11 +28,11 @@ module scanner #(
                     row <= 4'b1000;
                 end
                 else begin
-                    row <= row >> 1;
+                    row <= row >> 1'b1;
                 end
             end
 			else begin
-				count <= count + 1;
+				count <= count + 1'b1;
             end
         end
 		else begin
