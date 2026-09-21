@@ -37,7 +37,7 @@ module lab2_kg_tb;
             $error("TOP RESET FAILED: led = %b", led);
         
         // test Enable
-        enable = 1
+        enable = 1;
         #20;
         assert (led == 4'b0100)
             $display("TOP ENABLE PASS");
