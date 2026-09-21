@@ -38,7 +38,7 @@ module lab2_kg_tb;
         
         // test Enable
         enable = 1
-        #20
+        #20;
         assert (led == 4'b0100)
             $display("TOP ENABLE PASS");
         else
