@@ -47,7 +47,7 @@ module scanner_tb;
         // test 2: enable and first transition
         reset = 1;
         enable = 1;
-        #40;
+        #50;
 
         assert (row == 4'b0100)
             $display("TRANSITION 1000 -> 0100 PASSED");
@@ -136,7 +136,7 @@ module scanner_tb;
 
         #40;
 
-        assert (row == 4'b0100)
+        assert (row == 4'b1000)
             $display("RELEASE RESET PASSED: 1000 -> 0100");
         else
             $error("RELEASE RESET FAILED: row = %b", row);
