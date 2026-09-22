@@ -9,19 +9,23 @@ module lab2_kg_tb;
 
     logic [3:0] sl;
     logic [3:0] sr;
+    logic [3:0] col;
     logic rst, enable;
 
     logic [6:0] segment;
     logic [1:0] anode;
     logic [3:0] led;
+    logic [3:0] row;
      
     lab2_kg #() dut (
         .sl(sl),
         .sr(sr),
         .rst(rst),
+        .col(col),
         .segment(segment),
         .anode(anode),
-        .led(led)
+        .led(led),
+        .row(row)
     );
 
     initial begin
@@ -31,40 +35,42 @@ module lab2_kg_tb;
         #20;
 
         // test reset
-        assert (led == 4'b1000)
+        assert (row == 4'b1000)
             $display("TOP RESET PASS");
         else
             $error("TOP RESET FAILED: led = %b", led);
         
-        // test Enable
-        enable = 1;
-        #20;
-        assert (led == 4'b0100)
-            $display("TOP ENABLE PASS");
-        else
-            $error("TOP ENABLE FAILED: led = %b", led);
-
         // release reset
         rst = 1;
 
+        // test Enable
+        enable = 1;
+
+        #20;
+        
+        assert (row == 4'b0100)
+            $display("TOP ENABLE PASS");
+        else
+            $error("TOP ENABLE FAILED: row = %b", row);
+
         // test led scanning
         #50;
-        assert (led == 4'b0100)
-            $display("LED SCAN 1000 -> 0100 PASS");
+        assert (row == 4'b0100)
+            $display("ROW SCAN 1000 -> 0100 PASS");
         else
-            $error("LED SCAN 1000 -> 0100 FAILED: led = %b", led);
+            $error("ROW SCAN 1000 -> 0100 FAILED: row = %b", row);
 
         #50;
-        assert (led == 4'b0010)
-            $display("LED SCAN 0100 -> 0010 PASS");
+        assert (row == 4'b0010)
+            $display("ROW SCAN 0100 -> 0010 PASS");
         else
-            $error("LED SCAN 0100 -> 0010 FAILED: led = %b", led);
+            $error("ROW SCAN 0100 -> 0010 FAILED: row = %b", row);
 
         #50;
-        assert (led == 4'b0001)
-            $display("LED SCAN 0010 -> 0001 PASS");
+        assert (row == 4'b0001)
+            $display("ROW SCAN 0010 -> 0001 PASS");
         else
-            $error("LED SCAN 0010 -> 0001 FAILED: led = %b", led);
+            $error("ROW SCAN 0010 -> 0001 FAILED: row = %b", row);
 
         // test time mux
         sl = 4'h3;

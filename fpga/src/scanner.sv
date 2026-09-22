@@ -7,10 +7,10 @@
 module scanner #(
 	parameter width = 23,
 	parameter max_count = 24'd10000000)
-   (input  logic clk,
-	input  logic reset,
-	input  logic enable,
-	output logic [3:0] row
+	(input  logic clk,
+	 input  logic reset,
+   input  logic enable,
+	 output logic [3:0] row
 );
 
 	logic led;
