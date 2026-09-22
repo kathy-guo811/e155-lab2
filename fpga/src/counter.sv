@@ -18,7 +18,7 @@ module counter #(
 		.clk(clk),
 		.reset(reset),
 		.enable(enable),
-		.led(digit_select)
+		.count(digit_select)
 	);
 
 endmodule
