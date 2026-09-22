@@ -16,3 +16,4 @@ impl*/
 impl_1/
 seven_segment_display_sim/vsim.wlf
 .sty
+fpga/.DS_Store
