@@ -6,7 +6,7 @@
 
 module scanner #(
 	parameter width = 24,
-	parameter max_count = 24'd10000000)
+	parameter max_count = 24'd5000000)
 	(input  logic clk,
 	 input  logic reset,
 	 input  logic enable,
@@ -16,27 +16,32 @@ module scanner #(
 	logic led;
 	logic led_prev;
 
-	blinker #(.width(width), .max_count(max_count)) blink_s (
+	blinker #(.width(width), .max_count(max_count/4)) blink_s (
 		.clk(clk),
 		.reset(reset),
 		.enable(enable),
 		.led(led)
 	);
-	
+
 	always_ff @(posedge clk, negedge reset) begin
-		if (reset == 0) begin  				// active low reset
-			row <= 4'b1000;
+		if (reset == 0) begin
+			state    <= 2'd0;
 			led_prev <= 1'b0;
 		end
 		else begin
 			led_prev <= led; 				// update led_prev to equal led
 			if (led != led_prev) begin
-				if (row == 4'b0001)			// wrap around if in the last row
-					row <= 4'b1000;
+				if (state == 2'd3)
+					state <= 2'd0;
 				else
-					row <= row >> 1'b1;		// bit shifting
+					state <= state + 2'd1;
 			end
 		end
 	end
+
+	assign row[3] = (state == 2'd0);
+	assign row[2] = (state == 2'd1);
+	assign row[1] = (state == 2'd2);
+	assign row[0] = (state == 2'd3);
 
 endmodule
