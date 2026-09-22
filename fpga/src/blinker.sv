@@ -13,12 +13,10 @@ module blinker #(
 );
 
 	logic [width-1:0] counter;
-	logic toggle;
 	
 	always_ff @(posedge clk, negedge reset) begin
 		if (reset == 0) begin
 			counter <= 0;
-			toggle <= 0;
 		end
 		else if (enable) begin
 			if (counter == max_count) begin
