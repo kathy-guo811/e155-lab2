@@ -9,7 +9,7 @@ module blinker #(
   (input logic clk,
 	input logic reset,
 	input logic enable,
-	output logic led
+	output logic count
 );
 
 	logic [width-1:0] counter;
@@ -23,12 +23,9 @@ module blinker #(
 		else if (enable) begin
 			if (counter == max_count) begin
 				counter <= 0;
-				toggle <= ~toggle;
 			end
 			else
 				counter <= counter + 1;
 		end
 	end
-
-	assign led = toggle;
 endmodule
