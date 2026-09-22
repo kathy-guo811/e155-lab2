@@ -1,0 +1,8 @@
+{
+  "top": "lab2_kg_tb",
+  "build": {
+    "board": "upduino-v3.1",
+    "top": "blinker",
+    "frontend": "slang"
+  }
+}
