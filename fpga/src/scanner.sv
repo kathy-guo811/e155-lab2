@@ -23,10 +23,12 @@ module scanner #(
 	);
 
 	always_comb begin
-		if (count <= max_count/4 && count >= 0) row <= 4'b0001;
-		else if (count <= max_count/2 && count >= max_count/4) row <= 4'b0010;
-		else if (count <= 3*max_count/4 && count >= max_count/2) row <= 4'b0100;
-		else row <= 4'b1000;
+		if (reset != 0) begin
+			if (count <= max_count/4 && count >= 0) row <= 4'b0001;
+			else if (count <= max_count/2 && count >= max_count/4) row <= 4'b0010;
+			else if (count <= 3*max_count/4 && count >= max_count/2) row <= 4'b0100;
+			else row <= 4'b1000;
+		end
 	end
 
 
