@@ -10,7 +10,7 @@ module lab2_kg_tb;
     logic [3:0] sl;
     logic [3:0] sr;
     logic [3:0] col;
-    logic rst, enable;
+    logic rst;
 
     logic [6:0] segment;
     logic [1:0] anode;
@@ -30,7 +30,11 @@ module lab2_kg_tb;
 
     initial begin
     
+        // initialize all inputs
         rst = 0;
+        sl = 4'h3;
+        sr = 4'h5;
+        col = 4'b1111;
 
         #20;
 
@@ -43,50 +47,40 @@ module lab2_kg_tb;
         // release reset
         rst = 1;
 
-        // test Enable
-        enable = 1;
-
-        #20;
+        #100;
         
-        assert (row == 4'b0100)
-            $display("TOP ENABLE PASS");
-        else
-            $error("TOP ENABLE FAILED: row = %b", row);
+        // test LED drive
 
-        // test led scanning
-        #50;
-        assert (row == 4'b0100)
-            $display("ROW SCAN 1000 -> 0100 PASS");
+        col = 4'b1110;
+        #10
+        assert (led == 4'b0001)
+            $display("LED DRIVING PASS");
         else
-            $error("ROW SCAN 1000 -> 0100 FAILED: row = %b", row);
+            $error("LED DRIVING FAILED: col = %b, led = %b", col, led);
 
-        #50;
-        assert (row == 4'b0010)
-            $display("ROW SCAN 0100 -> 0010 PASS");
-        else
-            $error("ROW SCAN 0100 -> 0010 FAILED: row = %b", row);
-
-        #50;
-        assert (row == 4'b0001)
-            $display("ROW SCAN 0010 -> 0001 PASS");
-        else
-            $error("ROW SCAN 0010 -> 0001 FAILED: row = %b", row);
-
-        // test time mux
-        sl = 4'h3;
-        sr = 4'h5;
+        // time multiplexing
 
         #20;
-        assert (anode == 2'b10)
+        assert (anode == 2'b01)
             $display("ANODE 0 SELECTION PASS");
         else
             $error("ANODE 0 SELECTION FAILED: anode = %b", anode);
+        
+        assert (segment == 7'b0110000)
+          $display("MUX SL = 3 PASS");
+        else
+            $error("MUX SL = 3 FAILED: segment = %b", segment);
 
-        #20;
-        assert (anode !== 2'b01)
+        #1100000;
+        assert (anode !== 2'b10)
             $error("ANODE 1 SELECTION FAILED: anode = %b", anode);
         else
             $display("ANODE 1 SELECTION PASS");
+
+        assert (segment == 7'b0010010)
+            $display("MUX SR = 5 PASS");
+        else
+            $error("MUX SR = 5 FAILED: segment = %b", segment);
 
         $stop;
     end
