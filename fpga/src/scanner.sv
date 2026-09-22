@@ -14,6 +14,7 @@ module scanner #(
 );
 
 	logic led;
+	logic led_prev;
 
 	blinker #(.width(width), .max_count(max_count)) blink_s (
 		.clk(clk),
@@ -22,15 +23,19 @@ module scanner #(
 		.led(led)
 	);
 	
-	always_ff @(posedge led, negedge led, negedge reset) begin
+	always_ff @(posedge clk, negedge reset) begin
 		if (reset == 0) begin
 			row <= 4'b1000;
+			led_prev <= 1'b0;
 		end
 		else begin
-			if (row == 4'b0001)
-				row <= 4'b1000;
-			else
-				row <= row >> 1'b1;
+			led_prev <= led;
+			if (led != led_prev) begin
+				if (row == 4'b0001)
+					row <= 4'b1000;
+				else
+					row <= row >> 1;
+			end
 		end
 	end
 
