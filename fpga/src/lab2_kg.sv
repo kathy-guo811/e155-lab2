@@ -9,7 +9,7 @@ module lab2_kg # (
   parameter max_count = 24'd24000
 	)(
 	input logic [3:0] sl,
-  input logic [3:0] sr,
+	input logic [3:0] sr,
 	input logic [3:0] col,
 	input logic rst,
 	output logic [6:0] segment,

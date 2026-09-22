@@ -5,11 +5,11 @@
 // 0010, and 0001, advancing one step each time blinker's led toggles.
 
 module scanner #(
-	parameter width = 23,
+	parameter width = 24,
 	parameter max_count = 24'd10000000)
 	(input  logic clk,
 	 input  logic reset,
-   input  logic enable,
+	 input  logic enable,
 	 output logic [3:0] row
 );
 
@@ -34,7 +34,7 @@ module scanner #(
 				if (row == 4'b0001)
 					row <= 4'b1000;
 				else
-					row <= row >> 1;
+					row <= row >> 1'b1;
 			end
 		end
 	end
