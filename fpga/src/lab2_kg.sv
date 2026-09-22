@@ -4,10 +4,9 @@
 // Top level module for E155_lab2. 
 // Instantiates multiplexing counter module, scanning module and assign statements to implement multiplexing and scanning passthrough.
 
-
 module lab2_kg(
 	input logic [3:0] sl,
-  	input logic [3:0] sr,
+  input logic [3:0] sr,
 	input logic [3:0] col,
 	input logic rst,
 	output logic [6:0] segment,

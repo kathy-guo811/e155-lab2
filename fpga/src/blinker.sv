@@ -3,7 +3,6 @@
 // 9/6/2026
 // Blinker module containing a counter that increments on each positive clock edge and toggles an LED indicating output once it reaches max_count.
 
-
 module blinker #(
 	parameter width = 24,
 	parameter max_count = 24'd10000000)
@@ -16,7 +15,7 @@ module blinker #(
 	logic [width-1:0] counter;
 	logic toggle;
 	
-	always_ff @(posedge clk) begin
+	always_ff @(posedge clk, negedge reset) begin
 		if (reset == 0) begin
 			counter <= 0;
 			toggle <= 0;
