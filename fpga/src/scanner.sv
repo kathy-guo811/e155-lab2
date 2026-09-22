@@ -24,17 +24,17 @@ module scanner #(
 	);
 	
 	always_ff @(posedge clk, negedge reset) begin
-		if (reset == 0) begin
+		if (reset == 0) begin  				// active low reset
 			row <= 4'b1000;
 			led_prev <= 1'b0;
 		end
 		else begin
-			led_prev <= led;
+			led_prev <= led; 				// update led_prev to equal led
 			if (led != led_prev) begin
-				if (row == 4'b0001)
+				if (row == 4'b0001)			// wrap around if in the last row
 					row <= 4'b1000;
 				else
-					row <= row >> 1'b1;
+					row <= row >> 1'b1;		// bit shifting
 			end
 		end
 	end
