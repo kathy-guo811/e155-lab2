@@ -9,7 +9,7 @@ module scanner #(
 	parameter max_count = 24'd5000000)
 	(input  logic clk,
 	 input  logic reset,
-   input  logic enable,
+	 input  logic enable,
 	 output logic [3:0] row
 );
 
@@ -29,7 +29,7 @@ module scanner #(
 			led_prev <= 1'b0;
 		end
 		else begin
-			led_prev <= led;
+			led_prev <= led; 				// update led_prev to equal led
 			if (led != led_prev) begin
 				if (state == 2'd3)
 					state <= 2'd0;
