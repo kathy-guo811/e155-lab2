@@ -9,7 +9,11 @@ module scanner #(
 	parameter max_count = 24'd5000000)
 	(input  logic clk,
 	 input  logic reset,
+<<<<<<< Updated upstream
      input  logic enable,
+=======
+	 input  logic enable,
+>>>>>>> Stashed changes
 	 output logic [3:0] row
 );
 
