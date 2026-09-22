@@ -19,12 +19,12 @@ module blinker #(
 	always_ff @(posedge clk) begin
 		if (reset == 0) begin
 			counter <= 0;
-			toggle = 0;
+			toggle <= 0;
 		end
 		else if (enable) begin
 			if (counter == max_count) begin
 				counter <= 0;
-				toggle = ~toggle;
+				toggle <= ~toggle;
 			end
 			else
 				counter <= counter + 1;

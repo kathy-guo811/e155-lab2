@@ -7,7 +7,7 @@
 
 module lab2_kg(
 	input logic [3:0] sl,
-  input logic [3:0] sr,
+  	input logic [3:0] sr,
 	input logic [3:0] col,
 	input logic rst,
 	output logic [6:0] segment,
@@ -19,7 +19,6 @@ module lab2_kg(
 	logic int_osc;
 	logic digit_select;
 	logic [3:0] display_value;
-	logic [3:0] scan;
 	
 	// Internal high-speed oscillator
 	HSOSC #(.CLKHF_DIV(2'b01))
@@ -44,11 +43,11 @@ module lab2_kg(
 
 	// scanner
 	scanner s(
-        .clk(int_osc),
-        .reset(rst),
-        .enable(1'b1),
-        .row(row)
-    );
+    .clk(int_osc),
+    .reset(rst),
+    .enable(1'b1),
+    .row(row)
+  );
 
 
 	// time multiplexing

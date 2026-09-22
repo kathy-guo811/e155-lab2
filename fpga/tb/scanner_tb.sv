@@ -14,7 +14,7 @@ module scanner_tb;
 
     // instantiate scanner with a very small counter to speed up simulation
     scanner #(
-        .width(1),
+        .width(2),
         .max_count(3)
     ) dut (
         .clk(clk),
@@ -81,7 +81,7 @@ module scanner_tb;
             $error("TRANSITION 0001 -> 1000 FAILED: row = %b", row);
 
 
-        // test 5: disable
+        // test 6: disable
         #40;
 
         assert (row == 4'b0100)

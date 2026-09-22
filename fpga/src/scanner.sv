@@ -22,7 +22,7 @@ module scanner #(
 		.led(led)
 	);
 	
-	always_ff @(posedge led,negedge reset) begin
+	always_ff @(posedge led, negedge led, negedge reset) begin
 		if (reset == 0) begin
 			row <= 4'b1000;
 		end
