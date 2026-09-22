@@ -8,7 +8,7 @@ module counter #(
   parameter width,
   parameter max_count
 	)(
-  input  logic clk,
+	input  logic clk,
 	input  logic reset,
 	input  logic enable,
 	output logic digit_select

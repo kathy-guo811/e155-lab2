@@ -9,12 +9,11 @@ module scanner #(
 	parameter max_count = 24'd5000000)
 	(input  logic clk,
 	 input  logic reset,
-   input  logic enable,
+     input  logic enable,
 	 output logic [3:0] row
 );
 
-	logic count;
-	logic led_prev;
+	logic [23:0] count;
 
 	blinker #(.width(width), .max_count(max_count)) blink_s (
 		.clk(clk),
