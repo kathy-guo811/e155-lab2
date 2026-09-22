@@ -4,7 +4,10 @@
 // Top level module for E155_lab2. 
 // Instantiates multiplexing counter module, scanning module and assign statements to implement multiplexing and scanning passthrough.
 
-module lab2_kg(
+module lab2_kg # (
+  parameter width = 23,
+  parameter max_count = 24'd24000
+	)(
 	input logic [3:0] sl,
   input logic [3:0] sr,
 	input logic [3:0] col,
@@ -24,7 +27,10 @@ module lab2_kg(
 		hf_osc (.CLKHFPU(1'b1), .CLKHFEN(1'b1), .CLKHF(int_osc));
 
 	// Counter for multiplexing
-	counter c(
+	counter #(
+    .width(width),
+    .max_count(max_count)
+	) c (
 		.clk(int_osc),
 		.reset(rst),
 		.enable(1'b1),

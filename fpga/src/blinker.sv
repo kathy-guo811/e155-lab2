@@ -6,7 +6,7 @@
 module blinker #(
 	parameter width = 24,
 	parameter max_count = 24'd10000000)
-   (input logic clk,
+  (input logic clk,
 	input logic reset,
 	input logic enable,
 	output logic led
