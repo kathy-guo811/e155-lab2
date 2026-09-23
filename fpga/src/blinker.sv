@@ -5,25 +5,25 @@
 
 module blinker #(
 	parameter width = 24,
-	parameter max_count = 24'd10000000)
+	parameter max_count = 24'd50000000)
   (input logic clk,
 	input logic reset,
 	input logic enable,
-	output logic count
+	output logic [width-1:0] count
 );
 
-	logic [width-1:0] counter;
 	
 	always_ff @(posedge clk, negedge reset) begin
 		if (reset == 0) begin
-			counter <= 0;
+			count <= 0;
 		end
 		else if (enable) begin
-			if (counter == max_count) begin
-				counter <= 0;
+			if (count == max_count) begin
+				count <= 0;
 			end
 			else
-				counter <= counter + 1;
+				count <= count + 1;
 		end
 	end
+
 endmodule

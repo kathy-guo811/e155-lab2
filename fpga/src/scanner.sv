@@ -9,12 +9,19 @@ module scanner #(
 	parameter max_count = 24'd5000000)
 	(input  logic clk,
 	 input  logic reset,
+<<<<<<< HEAD
      input  logic enable,
+=======
+<<<<<<< Updated upstream
+     input  logic enable,
+=======
+	 input  logic enable,
+>>>>>>> Stashed changes
+>>>>>>> 8ad74066b8d06ce4f3db773536d84d2573339757
 	 output logic [3:0] row
 );
 
-	logic count;
-	logic led_prev;
+	logic [23:0] count;
 
 	blinker #(.width(width), .max_count(max_count)) blink_s (
 		.clk(clk),
@@ -24,10 +31,12 @@ module scanner #(
 	);
 	
 	always_comb begin
-		if (count <= max_count/4 && count >= 0) row <= 4'b0001;
-		else if (count <= max_count/2 && count >= max_count/4) row <= 4'b0010;
-		else if (count <= 3*max_count/4 && count >= max_count/2) row <= 4'b0100;
-		else row <= 4'b1000;
+		if (reset != 0) begin
+			if (count <= max_count/4 && count >= 0) row <= 4'b0001;
+			else if (count <= max_count/2 && count >= max_count/4) row <= 4'b0010;
+			else if (count <= 3*max_count/4 && count >= max_count/2) row <= 4'b0100;
+			else row <= 4'b1000;
+		end
 	end
 
 
