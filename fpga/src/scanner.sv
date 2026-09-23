@@ -9,7 +9,7 @@ module scanner #(
 	parameter max_count = 24'd5000000)
 	(input  logic clk,
 	 input  logic reset,
-   input  logic enable,
+     input  logic enable,
 	 output logic [3:0] row
 );
 
@@ -22,7 +22,7 @@ module scanner #(
 		.enable(enable),
 		.count(count)
 	);
-
+	
 	always_comb begin
 		if (count <= max_count/4 && count >= 0) row <= 4'b0001;
 		else if (count <= max_count/2 && count >= max_count/4) row <= 4'b0010;
